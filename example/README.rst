@@ -14,7 +14,8 @@ Run it
     uv run example/manage.py runserver
 
 Then open http://127.0.0.1:8000/ for a reason to say no, rendered by the
-``{% no %}`` template tag.
+``{% no %}`` template tag, and http://127.0.0.1:8000/forbidden/ for the
+403 page served by ``handler403 = "no.views.permission_denied"``.
 
 By default reasons come from the bundled list (``LocalBackend``). To fetch
 them from the remote API instead, falling back to the bundled list whenever

@@ -76,6 +76,61 @@ From Python code:
 
     get_reason()  # "I'm on a strict 'no commitments' diet."
 
+Or from the command line:
+
+.. code-block:: shell
+
+    ./manage.py no
+
+Error pages
+~~~~~~~~~~~
+
+Tell users *why* not on 403 pages, in your root URLconf:
+
+.. code-block:: python
+
+    handler403 = "no.views.permission_denied"
+
+Django has no ``handler429``, so hand ``no.views.too_many_requests`` to your
+rate limiter instead, e.g. `django-ratelimit
+<https://github.com/jsocol/django-ratelimit>`_:
+
+.. code-block:: python
+
+    RATELIMIT_VIEW = "no.views.too_many_requests"
+
+Both render your own ``403.html`` / ``429.html`` if you have one, with
+``{{ reason }}`` and ``{{ exception }}`` in the context, and fall back to a
+minimal built-in page otherwise. Like the REST framework handler below, they
+only use local reasons.
+
+Django REST framework
+~~~~~~~~~~~~~~~~~~~~~
+
+Add a ``reason`` to every 403 and 429 JSON response:
+
+.. code-block:: shell
+
+    pip install django-no[drf]
+
+.. code-block:: python
+
+    REST_FRAMEWORK = {
+        "EXCEPTION_HANDLER": "no.contrib.rest_framework.exception_handler",
+    }
+
+.. code-block:: json
+
+    {
+        "detail": "You do not have permission to perform this action.",
+        "reason": "I'm on a strict 'no commitments' diet."
+    }
+
+Reasons always come from the local list here, never from a remote API, so
+a flood of throttled requests doesn't turn into a flood of outgoing ones.
+Already have a custom exception handler? Pass its response through
+``no.contrib.rest_framework.add_reason()``.
+
 Configuration
 -------------
 
