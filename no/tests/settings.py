@@ -8,6 +8,8 @@ INSTALLED_APPS = [
     *PROJECT_APPS,
 ]
 
+ROOT_URLCONF = "no.tests.urls"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

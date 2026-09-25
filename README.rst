@@ -82,6 +82,28 @@ Or from the command line:
 
     ./manage.py no
 
+Error pages
+~~~~~~~~~~~
+
+Tell users *why* not on 403 pages, in your root URLconf:
+
+.. code-block:: python
+
+    handler403 = "no.views.permission_denied"
+
+Django has no ``handler429``, so hand ``no.views.too_many_requests`` to your
+rate limiter instead, e.g. `django-ratelimit
+<https://github.com/jsocol/django-ratelimit>`_:
+
+.. code-block:: python
+
+    RATELIMIT_VIEW = "no.views.too_many_requests"
+
+Both render your own ``403.html`` / ``429.html`` if you have one, with
+``{{ reason }}`` and ``{{ exception }}`` in the context, and fall back to a
+minimal built-in page otherwise. Like the REST framework handler below, they
+only use local reasons.
+
 Django REST framework
 ~~~~~~~~~~~~~~~~~~~~~
 
