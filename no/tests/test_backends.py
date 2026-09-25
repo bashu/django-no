@@ -62,7 +62,11 @@ class TestRemoteBackend:
             return_value=response({"reason": "Remote nope."}),
         ) as urlopen:
             assert backend.get_reason() == "Remote nope."
-        urlopen.assert_called_once_with("https://example.com/no", timeout=5)
+        (request,), kwargs = urlopen.call_args
+        assert request.full_url == "https://example.com/no"
+        assert request.get_header("User-agent").startswith("django-no")
+        assert request.get_header("Accept") == "application/json"
+        assert kwargs == {"timeout": 5}
 
     @pytest.mark.parametrize(
         "side_effect",

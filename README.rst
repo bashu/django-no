@@ -101,8 +101,8 @@ rate limiter instead, e.g. `django-ratelimit
 
 Both render your own ``403.html`` / ``429.html`` if you have one, with
 ``{{ reason }}`` and ``{{ exception }}`` in the context, and fall back to a
-minimal built-in page otherwise. Like the REST framework handler below, they
-only use local reasons.
+minimal built-in page otherwise. Reasons come from the configured backend;
+if that's ``RemoteBackend``, read the notes under `RemoteBackend`_ first.
 
 Django REST framework
 ~~~~~~~~~~~~~~~~~~~~~
@@ -126,8 +126,7 @@ Add a ``reason`` to every 403 and 429 JSON response:
         "reason": "I'm on a strict 'no commitments' diet."
     }
 
-Reasons always come from the local list here, never from a remote API, so
-a flood of throttled requests doesn't turn into a flood of outgoing ones.
+Reasons come from the configured backend, same as error pages above.
 Already have a custom exception handler? Pass its response through
 ``no.contrib.rest_framework.add_reason()``.
 
@@ -188,8 +187,18 @@ Fetches a reason from an HTTP API that responds with
         "OPTIONS": {"timeout": 1, "cooldown": 300},
     }
 
-Keep in mind the request is made while the template renders, so a slow
-API slows down your page by up to ``timeout`` seconds.
+Things to consider before using it:
+
+* Every reason is an HTTP request made while the response is built, so a
+  slow API slows down your pages by up to ``timeout`` seconds.
+* The default public endpoint is rate limited to 120 requests per minute.
+  Past that it answers 429, and ``RemoteBackend`` falls back to local reasons
+  for ``cooldown`` seconds. Fine for a hobby site; for anything busier, run
+  your own `no-as-a-service <https://github.com/hotheadhacker/no-as-a-service>`_
+  instance and point ``url`` at it, or stick with ``LocalBackend``.
+* Error responses tend to come in floods, 429s especially. With error pages
+  or the REST framework handler enabled, every one of them is also a request
+  to ``url``. Make sure your endpoint can take it.
 
 Custom backends
 ~~~~~~~~~~~~~~~

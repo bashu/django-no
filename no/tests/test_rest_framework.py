@@ -60,6 +60,11 @@ class TestExceptionHandler:
     def test_unhandled_exception(self):
         assert handle(ValueError()) is None
 
+    def test_custom_backend(self, settings):
+        settings.NO = {"BACKEND": "no.tests.backends.PoliteBackend"}
+        response = handle(exceptions.PermissionDenied())
+        assert response.data["reason"] == "No, thank you."
+
     def test_view(self, settings, reasons_file):
         settings.REST_FRAMEWORK = {
             "EXCEPTION_HANDLER": "no.contrib.rest_framework.exception_handler",

@@ -1,6 +1,15 @@
 Changes
 -------
 
+1.1.1 (2026-09-25)
+~~~~~~~~~~~~~~~~~~
+
+* Fix ``RemoteBackend`` always falling back to local reasons: send a
+  ``User-Agent`` header, since Cloudflare blocks urllib's default with a 403
+* Error pages and the REST framework handler now use the configured backend
+  instead of always using local reasons
+* Document ``RemoteBackend`` trade-offs and the default endpoint's rate limit
+
 1.1.0 (2026-09-25)
 ~~~~~~~~~~~~~~~~~~
 

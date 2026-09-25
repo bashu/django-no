@@ -1,19 +1,14 @@
-from django.conf import settings
 from django.http import HttpResponse
 from django.http import HttpResponseForbidden
 from django.template import loader
 from django.views.decorators.csrf import requires_csrf_token
 
-from no.backends.local import LocalBackend
+from no import get_reason
 
 
 def render_error(request, exception, template_name, fallback):
-    # Never hit a remote API here: 429s come in floods.
-    options = getattr(settings, "NO", {}).get("OPTIONS", {})
-    reason = LocalBackend(path=options.get("path")).get_reason()
-
     template = loader.select_template([template_name, fallback])
-    context = {"reason": reason, "exception": str(exception or "")}
+    context = {"reason": get_reason(), "exception": str(exception or "")}
     return template.render(context, request)
 
 

@@ -42,6 +42,11 @@ class TestPermissionDenied:
         assert response.status_code == 403  # noqa: PLR2004
         assert b"<p>Nope.</p>" in response.content
 
+    def test_custom_backend(self, settings, request_):
+        settings.NO = {"BACKEND": "no.tests.backends.PoliteBackend"}
+        response = permission_denied(request_, PermissionDenied())
+        assert b"<p>No, thank you.</p>" in response.content
+
 
 class TestTooManyRequests:
     def test_fallback_template(self, reasons_file, request_):
