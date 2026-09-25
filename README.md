@@ -8,17 +8,17 @@
 | no/backends/\_\_init\_\_.py            |        0 |        0 |     100% |           |
 | no/backends/base.py                    |        5 |        0 |     100% |           |
 | no/backends/local.py                   |       14 |        0 |     100% |           |
-| no/backends/remote.py                  |       25 |        0 |     100% |           |
+| no/backends/remote.py                  |       28 |        0 |     100% |           |
 | no/contrib/\_\_init\_\_.py             |        0 |        0 |     100% |           |
-| no/contrib/rest\_framework.py          |       14 |        0 |     100% |           |
+| no/contrib/rest\_framework.py          |       10 |        0 |     100% |           |
 | no/management/\_\_init\_\_.py          |        0 |        0 |     100% |           |
 | no/management/commands/\_\_init\_\_.py |        0 |        0 |     100% |           |
 | no/management/commands/no.py           |        6 |        0 |     100% |           |
 | no/models.py                           |        0 |        0 |     100% |           |
 | no/templatetags/\_\_init\_\_.py        |        0 |        0 |     100% |           |
 | no/templatetags/no.py                  |        6 |        0 |     100% |           |
-| no/views.py                            |       20 |        0 |     100% |           |
-| **TOTAL**                              |  **105** |    **0** | **100%** |           |
+| no/views.py                            |       17 |        0 |     100% |           |
+| **TOTAL**                              |  **101** |    **0** | **100%** |           |
 
 
 ## Setup coverage badge
