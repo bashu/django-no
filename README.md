@@ -17,7 +17,8 @@
 | no/models.py                           |        0 |        0 |     100% |           |
 | no/templatetags/\_\_init\_\_.py        |        0 |        0 |     100% |           |
 | no/templatetags/no.py                  |        6 |        0 |     100% |           |
-| **TOTAL**                              |   **85** |    **0** | **100%** |           |
+| no/views.py                            |       20 |        0 |     100% |           |
+| **TOTAL**                              |  **105** |    **0** | **100%** |           |
 
 
 ## Setup coverage badge
