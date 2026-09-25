@@ -1,0 +1,12 @@
+{% extends "site_base.html" %}
+
+{% load no %}
+
+{% block content %}
+  <blockquote>
+    {% no %}
+  </blockquote>
+  <p>
+    <a href="{% url 'index' %}">Ask again</a>
+  </p>
+{% endblock %}
