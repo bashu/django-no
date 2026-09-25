@@ -76,6 +76,12 @@ From Python code:
 
     get_reason()  # "I'm on a strict 'no commitments' diet."
 
+Or from the command line:
+
+.. code-block:: shell
+
+    ./manage.py no
+
 Configuration
 -------------
 
