@@ -82,6 +82,33 @@ Or from the command line:
 
     ./manage.py no
 
+Django REST framework
+~~~~~~~~~~~~~~~~~~~~~
+
+Add a ``reason`` to every 403 and 429 JSON response:
+
+.. code-block:: shell
+
+    pip install django-no[drf]
+
+.. code-block:: python
+
+    REST_FRAMEWORK = {
+        "EXCEPTION_HANDLER": "no.contrib.rest_framework.exception_handler",
+    }
+
+.. code-block:: json
+
+    {
+        "detail": "You do not have permission to perform this action.",
+        "reason": "I'm on a strict 'no commitments' diet."
+    }
+
+Reasons always come from the local list here, never from a remote API, so
+a flood of throttled requests doesn't turn into a flood of outgoing ones.
+Already have a custom exception handler? Pass its response through
+``no.contrib.rest_framework.add_reason()``.
+
 Configuration
 -------------
 
