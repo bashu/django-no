@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load i18n %}
+
+<!--[if lt IE 7]>      <html lang="{{ LANGUAGE_CODE }}" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ LANGUAGE_CODE }}" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ LANGUAGE_CODE }}" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="{{ LANGUAGE_CODE }}" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>django-no</title>
+    {% block extra_head_base %}
+      {% block extra_head %}
+      {% endblock extra_head %}
+    {% endblock extra_head_base %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+    {% block body %}
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+      <section id="content" class="container" role="main">
+        <div class="row">
+          {% block content_outer %}
+            {% block content %}{% endblock %}
+          {% endblock content_outer %}
+        </div>
+      </section>
+      <footer>
+        {% block footer %}{% endblock %}
+      </footer>
+      {% block extra_body_base %}
+        {% block extra_body %}{% endblock %}
+      {% endblock extra_body_base %}
+    {% endblock body %}
+  </body>
+</html>
