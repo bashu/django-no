@@ -2,17 +2,20 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/bashu/django-no/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name                            |    Stmts |     Miss |    Cover |   Missing |
-|-------------------------------- | -------: | -------: | -------: | --------: |
-| no/\_\_init\_\_.py              |       15 |        0 |     100% |           |
-| no/backends/\_\_init\_\_.py     |        0 |        0 |     100% |           |
-| no/backends/base.py             |        5 |        0 |     100% |           |
-| no/backends/local.py            |       14 |        0 |     100% |           |
-| no/backends/remote.py           |       25 |        0 |     100% |           |
-| no/models.py                    |        0 |        0 |     100% |           |
-| no/templatetags/\_\_init\_\_.py |        0 |        0 |     100% |           |
-| no/templatetags/no.py           |        6 |        0 |     100% |           |
-| **TOTAL**                       |   **65** |    **0** | **100%** |           |
+| Name                                   |    Stmts |     Miss |    Cover |   Missing |
+|--------------------------------------- | -------: | -------: | -------: | --------: |
+| no/\_\_init\_\_.py                     |       15 |        0 |     100% |           |
+| no/backends/\_\_init\_\_.py            |        0 |        0 |     100% |           |
+| no/backends/base.py                    |        5 |        0 |     100% |           |
+| no/backends/local.py                   |       14 |        0 |     100% |           |
+| no/backends/remote.py                  |       25 |        0 |     100% |           |
+| no/management/\_\_init\_\_.py          |        0 |        0 |     100% |           |
+| no/management/commands/\_\_init\_\_.py |        0 |        0 |     100% |           |
+| no/management/commands/no.py           |        6 |        0 |     100% |           |
+| no/models.py                           |        0 |        0 |     100% |           |
+| no/templatetags/\_\_init\_\_.py        |        0 |        0 |     100% |           |
+| no/templatetags/no.py                  |        6 |        0 |     100% |           |
+| **TOTAL**                              |   **71** |    **0** | **100%** |           |
 
 
 ## Setup coverage badge
