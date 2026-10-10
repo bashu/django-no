@@ -30,7 +30,7 @@ First install the module, preferably in a virtual environment. It can be install
 
     pip install django-no
 
-Requires Python 3.10+ and Django 5.2+.
+Requires Python 3.11+ and Django 5.2+.
 
 Setup
 -----
