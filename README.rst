@@ -18,7 +18,7 @@ a bundled list or from a remote
 `No-as-a-Service (NaaS) <https://github.com/hotheadhacker/no-as-a-service>`_ API,
 and can be rendered in templates or fetched from Python code.
 
-Authored by `Basil Shubin <https://github.com/bashu/>`_, and some great
+Authored by `Basil Shubin <https://github.com/bashu/>`_ (who is available for freelance/contract work), and some great
 `contributors <https://github.com/bashu/django-no/contributors>`_.
 
 Installation

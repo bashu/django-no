@@ -2,13 +2,13 @@ SECRET_KEY = "DUMMY_SECRET_KEY"  # noqa: S105
 
 # Application definition
 
-PROJECT_APPS = ["no.tests", "no"]
+PROJECT_APPS = ["tests", "no"]
 
 INSTALLED_APPS = [
     *PROJECT_APPS,
 ]
 
-ROOT_URLCONF = "no.tests.urls"
+ROOT_URLCONF = "tests.urls"
 
 TEMPLATES = [
     {
