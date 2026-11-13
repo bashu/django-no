@@ -18,8 +18,6 @@ HEADERS = {
 
 
 class RemoteBackend(BaseBackend):
-    _retry_after = 0.0
-
     def __init__(
         self,
         url: str = "https://naas.isalman.dev/no",
@@ -33,6 +31,7 @@ class RemoteBackend(BaseBackend):
             raise ImproperlyConfigured(msg)
         self.url, self.timeout, self.cooldown = url, timeout, cooldown
         self.fallback = LocalBackend(**options)
+        self._retry_after = 0.0
 
     def get_reason(self) -> str:
         if time.monotonic() < self._retry_after:
@@ -42,5 +41,5 @@ class RemoteBackend(BaseBackend):
             with urlopen(request, timeout=self.timeout) as r:  # noqa: S310 (scheme validated in __init__)
                 return json.load(r)["reason"]
         except Exception:  # noqa: BLE001
-            type(self)._retry_after = time.monotonic() + self.cooldown  # noqa: SLF001
+            self._retry_after = time.monotonic() + self.cooldown
             return self.fallback.get_reason()

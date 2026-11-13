@@ -83,8 +83,29 @@ class TestRemoteBackend:
         side_effect: Exception | Callable[..., io.BytesIO],
     ) -> None:
         monkeypatch.setattr(remote, "urlopen", mock.Mock(side_effect=side_effect))
-        # A failed request sets the cooldown on the class; restore it after the test.
-        monkeypatch.setattr(RemoteBackend, "_retry_after", 0.0)
         backend = RemoteBackend(path=str(custom_reasons_file))
 
         assert backend.get_reason() == "Nope."
+
+    def test_cooldown_per_instance(
+        self,
+        monkeypatch: pytest.MonkeyPatch,
+        custom_reasons_file: Path,
+    ) -> None:
+        urlopen = mock.Mock(side_effect=URLError("unreachable"))
+        monkeypatch.setattr(remote, "urlopen", urlopen)
+        failed = RemoteBackend(
+            url="https://down.example.com/no",
+            path=str(custom_reasons_file),
+        )
+        healthy = RemoteBackend(
+            url="https://up.example.com/no",
+            path=str(custom_reasons_file),
+        )
+        failed.get_reason()
+        urlopen.reset_mock(side_effect=True)
+        urlopen.return_value = create_response({"reason": "Remote nope."})
+
+        assert failed.get_reason() == "Nope."
+        assert healthy.get_reason() == "Remote nope."
+        assert urlopen.call_count == 1

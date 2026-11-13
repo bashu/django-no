@@ -9,6 +9,8 @@ Changes
 * Tests moved to a top-level ``tests/`` directory and are no longer part of
   the ``no`` package
 * Remove the example project
+* Fix ``RemoteBackend`` cooldown being shared by all instances: a failed
+  request no longer sends other instances to local reasons
 
 1.2.0 (2026-10-10)
 ~~~~~~~~~~~~~~~~~~
