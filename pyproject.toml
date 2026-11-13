@@ -4,7 +4,7 @@ requires = [ "hatch-fancy-pypi-readme>=24.1", "hatchling>=1.27" ]
 
 [project]
 name = "django-no"
-version = "1.2.0"
+version = "1.2.1"
 description = "Reusable Django app that gives you a reason to say no"
 license = "MIT"
 license-files = [ "LICENSE" ]
