@@ -2,23 +2,23 @@
 
 [Full report](https://htmlpreview.github.io/?https://github.com/bashu/django-no/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
-| Name                                       |    Stmts |     Miss |   Cover |   Missing |
-|------------------------------------------- | -------: | -------: | ------: | --------: |
-| src/no/\_\_init\_\_.py                     |       17 |        0 |    100% |           |
-| src/no/backends/\_\_init\_\_.py            |        0 |        0 |    100% |           |
-| src/no/backends/base.py                    |        6 |        0 |    100% |           |
-| src/no/backends/local.py                   |       15 |        0 |    100% |           |
-| src/no/backends/remote.py                  |       29 |        1 |     97% |        39 |
-| src/no/contrib/\_\_init\_\_.py             |        0 |        0 |    100% |           |
-| src/no/contrib/rest\_framework.py          |       12 |        0 |    100% |           |
-| src/no/management/\_\_init\_\_.py          |        0 |        0 |    100% |           |
-| src/no/management/commands/\_\_init\_\_.py |        0 |        0 |    100% |           |
-| src/no/management/commands/no.py           |        7 |        0 |    100% |           |
-| src/no/models.py                           |        0 |        0 |    100% |           |
-| src/no/templatetags/\_\_init\_\_.py        |        0 |        0 |    100% |           |
-| src/no/templatetags/no.py                  |        6 |        0 |    100% |           |
-| src/no/views.py                            |       18 |        0 |    100% |           |
-| **TOTAL**                                  |  **110** |    **1** | **99%** |           |
+| Name                                       |    Stmts |     Miss |    Cover |   Missing |
+|------------------------------------------- | -------: | -------: | -------: | --------: |
+| src/no/\_\_init\_\_.py                     |       17 |        0 |     100% |           |
+| src/no/backends/\_\_init\_\_.py            |        0 |        0 |     100% |           |
+| src/no/backends/base.py                    |        6 |        0 |     100% |           |
+| src/no/backends/local.py                   |       15 |        0 |     100% |           |
+| src/no/backends/remote.py                  |       29 |        0 |     100% |           |
+| src/no/contrib/\_\_init\_\_.py             |        0 |        0 |     100% |           |
+| src/no/contrib/rest\_framework.py          |       12 |        0 |     100% |           |
+| src/no/management/\_\_init\_\_.py          |        0 |        0 |     100% |           |
+| src/no/management/commands/\_\_init\_\_.py |        0 |        0 |     100% |           |
+| src/no/management/commands/no.py           |        7 |        0 |     100% |           |
+| src/no/models.py                           |        0 |        0 |     100% |           |
+| src/no/templatetags/\_\_init\_\_.py        |        0 |        0 |     100% |           |
+| src/no/templatetags/no.py                  |        6 |        0 |     100% |           |
+| src/no/views.py                            |       18 |        0 |     100% |           |
+| **TOTAL**                                  |  **110** |    **0** | **100%** |           |
 
 
 ## Setup coverage badge
