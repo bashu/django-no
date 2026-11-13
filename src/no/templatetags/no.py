@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.simple_tag(name="no")
-def no_tag():
+def no_tag() -> str:
     """
     Render a reason to say no.
 

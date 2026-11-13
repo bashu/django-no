@@ -8,7 +8,7 @@ def forbidden(request):
 
 
 urlpatterns = [
-    path("forbidden/", forbidden),
+    path("forbidden/", forbidden, name="forbidden"),
 ]
 
 handler403 = "no.views.permission_denied"

@@ -1,6 +1,17 @@
 Changes
 -------
 
+1.2.1 (2026-11-13)
+~~~~~~~~~~~~~~~~~~
+
+* Ship type annotations: the package now includes a ``py.typed`` marker
+* Build with hatchling instead of setuptools; sources moved to a ``src/`` layout
+* Tests moved to a top-level ``tests/`` directory and are no longer part of
+  the ``no`` package
+* Remove the example project
+* Fix ``RemoteBackend`` cooldown being shared by all instances: a failed
+  request no longer sends other instances to local reasons
+
 1.2.0 (2026-10-10)
 ~~~~~~~~~~~~~~~~~~
 

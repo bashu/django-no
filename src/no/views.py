@@ -1,19 +1,29 @@
+from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import HttpResponseForbidden
 from django.template import loader
 from django.views.decorators.csrf import requires_csrf_token
 
-from no import get_reason
+from . import get_reason
 
 
-def render_error(request, exception, template_name, fallback):
+def render_error(
+    request: HttpRequest,
+    exception: Exception | None,
+    template_name: str,
+    fallback: str,
+) -> str:
     template = loader.select_template([template_name, fallback])
     context = {"reason": get_reason(), "exception": str(exception or "")}
     return template.render(context, request)
 
 
 @requires_csrf_token
-def permission_denied(request, exception, template_name="403.html"):
+def permission_denied(
+    request: HttpRequest,
+    exception: Exception,
+    template_name: str = "403.html",
+) -> HttpResponse:
     """
     403 handler that tells users why not.
 
@@ -24,7 +34,11 @@ def permission_denied(request, exception, template_name="403.html"):
 
 
 @requires_csrf_token
-def too_many_requests(request, exception=None, template_name="429.html"):
+def too_many_requests(
+    request: HttpRequest,
+    exception: Exception | None = None,
+    template_name: str = "429.html",
+) -> HttpResponse:
     """
     429 view for rate limiters, e.g. django-ratelimit.
 
